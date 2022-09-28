@@ -15,8 +15,8 @@ var isLost = 0;
 var playAgain = true;
 
 while (playAgain) {
-    var userInput = prompt("Do you wanna choose r, p, or s?");
-    var compInput = rpsArray[Math.round(Math.random() * 3)];
+    var userInput = prompt("Do you wanna choose r, p, or s?").toLocaleLowerCase;
+    var compInput = rpsArray[Math.floor(Math.random() * 3)];
 
     if (!userInput)
         break;
@@ -41,7 +41,7 @@ while (playAgain) {
     else {
         isLost++;
         alert("You lost against a computer. HAHA");
-    };
+    }
 
     alert("Tie: " + isTie + "\n" +
         "Win: " + isWin + "\n" +
