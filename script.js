@@ -1,57 +1,53 @@
-// We have R, P, S
-// Computer generated index that calls on the array for [R, P, S]
-// After input from user, take input and compare to the logic of RockPaperScissor where:
-// Rock > Scissor
-// Paper > Rock
-// Scissor > Paper
+// We have r, p, s
+// Computer generated index that calls on the array for [r, p, s]
+// After input from user, take input and compare to the logic of rockPaperscissor where:
+// rock > scissor
+// Paper > rock
+// scissor > Paper
 // Edge Case
 //
 // If input = random input, then it is a tie
 
-var rpsArray = ["R", "P", "S"];
-var userInput = prompt("Do you wanna choose R, P, or S?");
-var compInput = rpsArray[Math.round(Math.random() * 3)];
+var rpsArray = ["r", "p", "s"];
 var isTie = 0;
 var isWin = 0;
 var isLost = 0;
-var playAgain = false;
+var playAgain = true;
 
-while ((userInput !== rpsArray[0]) && (userInput !== rpsArray[1]) && (userInput !== rpsArray[2])) {
-    alert("Please choose R, P, or S only. Invalid input");
-    userInput = prompt("Do you wanna choose R, P, or S?");
-};
+while (playAgain) {
+    var userInput = prompt("Do you wanna choose r, p, or s?");
+    var compInput = rpsArray[Math.round(Math.random() * 3)];
 
-if (userInput == compInput) {
-    isTie++;
-    alert("You tied with the computer");
-    playAgain = confirm("Play again?");
-} else if ((userInput == "R") && (compInput == "S")) {
-    isWin++;
-    alert("You won against a computer, congrats");
-    playAgain = confirm("Play again?");
-} else if ((userInput == "P") && (compInput == "R")) {
-    isWin++;
-    alert("You won against a computer, congrats");
-    playAgain = confirm("Play again?");
-} else if ((userInput == "S") && (compInput == "P")) {
-    isWin++;
-    alert("You won against a computer, congrats");
-    playAgain = confirm("Play again?");
-} else {
-    isLost++;
-    alert("You lost against a computer. HAHA");
-    playAgain = confirm("Play again?");
-};
+    if (!userInput)
+        break;
 
-if (playAgain = True) {
-    userInput = prompt("Do you wanna choose R, P, or S?");
-    compInput = rpsArray[Math.round(Math.random() * 3)];
+    while ((userInput !== rpsArray[0]) && (userInput !== rpsArray[1]) && (userInput !== rpsArray[2])) {
+        alert("Please choose r, p, or s only. Invalid input");
+        userInput = prompt("Do you wanna choose r, p, or s?");
+        if (!userInput)
+            break;
+    }
 
+    if (userInput == compInput) {
+        isTie++;
+        alert("You tied with the computer");
+    }
+    else if (((userInput == "r") && (compInput == "s")) || ((userInput == "p") && (compInput == "r")) || ((userInput == "s") && (compInput == "p"))) {
+        isWin++;
+        alert("You won against a computer, congrats!");
+    }
+    else if (userInput == undefined)
+        break;
+    else {
+        isLost++;
+        alert("You lost against a computer. HAHA");
+    };
+
+    alert("Tie: " + isTie + "\n" +
+        "Win: " + isWin + "\n" +
+        "Lost: " + isLost + "\n" +
+        "You chose: " + userInput + "\n" +
+        "The computer chose: " + compInput);
+
+    playAgain = confirm("Play again?");
 }
-
-
-console.log("Tie: " + isTie);
-console.log("Win: " + isWin);
-console.log("Lost: " + isLost);
-console.log(compInput);
-console.log(userInput);
