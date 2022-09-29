@@ -17,12 +17,12 @@ var playAgain = true;
 //will continue to run of player wants to continue playing
 while (playAgain) {
     //asks user for input
-    var userInput = prompt("Do you wanna choose r, p, or s?").toLocaleLowerCase;
+    var userInput = prompt("Do you wanna choose r, p, or s?");
     //creates computer input
     var compInput = rpsArray[Math.floor(Math.random() * 3)];
 
     //player can stop playing by pressing cancel
-    if (!userInput)
+    if (userInput == undefined)
         break;
 
     //if player enters invlaid input, asks them to retry
@@ -30,7 +30,7 @@ while (playAgain) {
         alert("Please choose r, p, or s only. Invalid input");
         userInput = prompt("Do you wanna choose r, p, or s?");
         //player can stop playing here
-        if (!userInput)
+        if (userInput == undefined)
             break;
     }
 
@@ -40,7 +40,7 @@ while (playAgain) {
         alert("You tied with the computer");
     }
     //checks for player win
-    else if (((userInput == "r") && (compInput == "s")) || ((userInput == "p") && (compInput == "r")) || ((userInput == "s") && (compInput == "p"))) {
+    else if ((userInput == "r" && compInput == "s") || (userInput == "p" && compInput == "r") || (userInput == "s") && (compInput == "p")) {
         isWin++;
         alert("You won against a computer, congrats!");
     }
